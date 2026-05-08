@@ -31,6 +31,10 @@ class SearchResult(BaseModel):
 def health_check():
     return {"status": "ok"}
 
+@app.get("/")
+def root():
+    return {"message": "Find Your Paper AI Microservice is running. Visit /docs for the API documentation."}
+
 @app.post("/internals/semantic-search", response_model=List[SearchResult])
 def semantic_search(req: SearchRequest):
     conn = None
